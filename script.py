@@ -21,7 +21,7 @@ if(option == '--get' or option =='-g'):
     # os.environ["user"] = "AdithyaPadmashali"
     # dotenv.set_key(dotenv_file, "user", os.environ["user"])
     # print(os.environ['user'])
-    print(latest_workflow_status.json()['workflow_runs'][0]['conclusion'])
+    print('workflow was a', latest_workflow_status.json()['workflow_runs'][0]['conclusion'])
 
 elif(option == '--post' or option == '-p'): 
     #Trigger a workflow
@@ -29,6 +29,7 @@ elif(option == '--post' or option == '-p'):
     auth_headers = {'Authorization' : 'Bearer {key}'.format(key = key)}
     # print(auth_headers)
     payload = {"ref" : "heroku"}
+    print(os.environ['user'])
     triggered = requests.post('https://api.github.com/repos/{owner}/{repository_name}/actions/workflows/main-workflow.yml/dispatches'.format(owner = os.environ['user'], repository_name = os.environ['repo']), data = json.dumps(payload), headers = auth_headers) 
     # print(triggered.content)
 
