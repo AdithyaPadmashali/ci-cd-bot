@@ -2,8 +2,10 @@ import requests
 import os
 import json
 from dotenv import load_dotenv
+import sys
 load_dotenv('./.env')
 
+option = sys.argv[1]
 
 owner = 'AdithyaPadmashali'
 
