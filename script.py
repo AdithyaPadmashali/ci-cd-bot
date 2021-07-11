@@ -29,9 +29,9 @@ elif(option == '--post' or option == '-p'):
     auth_headers = {'Authorization' : 'Bearer {key}'.format(key = key)}
     # print(auth_headers)
     payload = {"ref" : "heroku"}
-    triggered = requests.post('https://api.github.com/repos/{owner}/{repository_name}/actions/workflows/main-workflow.yml/dispatches'.format(owner = os.getenv('user'), repository_name = os.getenv('repo')), data = json.dumps(payload), headers = auth_headers) 
+    triggered = requests.post('https://api.github.com/repos/{owner}/{repository_name}/actions/workflows/main-workflow.yml/dispatches'.format(owner = os.environ['user'], repository_name = os.environ['repo']), data = json.dumps(payload), headers = auth_headers) 
     # print(triggered.content)
-    
+
 elif(option == '--set' or option == '-s'): 
     if([sys.argv[2], sys.argv[4]] != ['--user', '--repo']):
         print("Invalid Argument. Try --set --user <UserName> --repo <RepoName>")
